@@ -2,8 +2,9 @@ HELP.md
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
-!src/main_/**/build/
-!src/test_/**/build/
+!rest/src/main_/**/build/
+!rest/src/test_/**/build/
+secret.yaml
 
 ### STS ###
 .apt_generated
@@ -14,8 +15,8 @@ build/
 .springBeans
 .sts4-cache
 bin/
-!src/main_/**/bin/
-!src/test_/**/bin/
+!rest/src/main_/**/bin/
+!rest/src/test_/**/bin/
 
 ### IntelliJ IDEA ###
 .idea
@@ -23,8 +24,8 @@ bin/
 *.iml
 *.ipr
 out/
-!src/main_/**/out/
-!src/test_/**/out/
+!rest/src/main_/**/out/
+!rest/src/test_/**/out/
 
 ### NetBeans ###
 /nbproject/private/

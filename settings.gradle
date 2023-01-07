@@ -8,4 +8,6 @@
  */
 
 rootProject.name = 'daycounters'
-include('lib')
+include 'rest'
+include 'telegrambot'
+
