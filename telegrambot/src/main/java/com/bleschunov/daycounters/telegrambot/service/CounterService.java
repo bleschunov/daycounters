@@ -2,6 +2,7 @@ package com.bleschunov.daycounters.telegrambot.service;
 
 import com.bleschunov.daycounters.telegrambot.dto.AppUserDto;
 import com.bleschunov.daycounters.telegrambot.dto.CounterDto;
+import com.bleschunov.daycounters.telegrambot.util.Messages;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -15,10 +16,10 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class CounterService {
     private final WebClient webClient;
+    private final Messages messages;
 
     public void createCounter(Update update) {
-        String messageText = update.getMessage().getText();
-        String title = messageText.substring(messageText.indexOf(' '));
+        String title = messages.getCommandParam(update.getMessage().getText());
 
         CounterDto counterDto = CounterDto
                 .builder()
@@ -32,6 +33,17 @@ public class CounterService {
                 .body(Mono.just(counterDto), AppUserDto.class)
                 .retrieve()
                 .bodyToMono(Void.class)
+                .block();
+    }
+
+    public long getCounterValue(Update update) {
+        String title = messages.getCommandParam(update.getMessage().getText());
+
+        return webClient
+                .get()
+                .uri("/counter/" + title)
+                .retrieve()
+                .bodyToMono(Long.class)
                 .block();
     }
 }

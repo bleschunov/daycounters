@@ -14,4 +14,8 @@ public class Messages {
         sendMessage.setText(message);
         return sendMessage;
     }
+
+    public String getCommandParam(String messageText) {
+        return messageText.substring(messageText.indexOf(' '));
+    }
 }

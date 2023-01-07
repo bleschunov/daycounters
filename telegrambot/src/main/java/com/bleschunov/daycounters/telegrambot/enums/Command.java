@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 public enum Command {
+    GET_COUNTER_VALUE("/getcountervalue"),
     CREATE_COUNTER("/createcounter"),
     START("/start");
 
