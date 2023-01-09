@@ -12,5 +12,5 @@ public class CounterDto {
     private long id;
     private long ownerTelegramId;
     private String title;
-    private int maxDayStrike;
+    private int maxValue;
 }

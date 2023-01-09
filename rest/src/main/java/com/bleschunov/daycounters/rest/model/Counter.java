@@ -34,12 +34,15 @@ public class Counter {
     @Column(name = "title", nullable = false, length = 256)
     private String title;
 
-    @Column(name = "max_day_strike", nullable = false)
-    private int maxDayStrike = 0;
+    @Column(name = "max_value", nullable = false)
+    private long maxValue;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private AppUser owner;
+
+    @Column(name = "countdown_time", nullable = false)
+    private LocalDateTime countdownTime = LocalDateTime.now();
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false)
